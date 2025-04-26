@@ -1,7 +1,8 @@
 # BECO DA TASK
 
 Project Overview
-This project focuses on predicting target variables using machine learning models. The objective is to develop a regression model that achieves strong performance metrics, particularly focusing on the R² score to evaluate model accuracy.
+- This project focuses on predicting target variables using machine learning models. The objective is to develop a regression model that achieves strong performance metrics, particularly focusing on the R² score 
+  to evaluate model accuracy.
 
 The tasks covered:
 - Data cleaning and preprocessing
