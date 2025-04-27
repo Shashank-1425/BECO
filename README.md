@@ -1,44 +1,101 @@
-# BECO DA TASK
+Demand Forecasting Model
 
-Project Overview
-- This project focuses on predicting target variables using machine learning models. The objective is to develop a regression model that achieves strong performance metrics, particularly focusing on the R² score 
-  to evaluate model accuracy.
+This project aims to build a Demand Forecasting Machine Learning Model based on Blinkit sales data.  
+It predicts future product demand by analyzing patterns from historical sales records.
 
-The tasks covered:
-- Data cleaning and preprocessing
-- Exploratory Data Analysis (EDA)
-- Model building and evaluation
-- Analysis of model performance and suggestions for improvements
+Project Workflow
 
-Project Structure
-- Data Preprocessing:  
-  Handled missing values, feature engineering, and scaling where required.
+1. Data Loading
+- Loaded data from an Excel file using pandas.
+- Ensured proper handling of dates.
 
-- Exploratory Data Analysis (EDA):  
-  Visualized distributions, correlations, and important trends in the dataset.
+2. Data Preparation
+- Converted the date column into datetime format.
+- Sorted the dataset chronologically.
+- Aggregated daily sales totals.
 
-- Model Building:  
-  Built a regression model (Linear Regression and others if applicable).  
-  Evaluated model performance using R² Score and other metrics.
+3. Feature Engineering
+- Created useful features like:
+  - Lag Features - Sales from 1, 7, and 14 days ago.
+  - Rolling Averages - 7 day and 14 day moving averages of sales.
+  - Date-based Features — (like month, week of year, day of week) to capture seasonal effects (optional extension).
 
-- Model Evaluation:  
-  Identified differences in R² scores between models due to feature selection, train-test split variability, or preprocessing differences.
+4. Model Selection
+- Chose XGBoost Regressor because it works well for structured/tabular data, and handles non-linear relationships very efficiently.
 
-Key Results
-- Model Performance:
-  - Achieved an R² score of approximately 0.33.
-  - Identified that preprocessing steps and feature selection greatly impacted R² score variability.
+5. Hyperparameter Tuning
+- Applied RandomizedSearchCV to find the best parameters.
+- Tuned parameters like:
+  - Number of trees (`n_estimators`)
+  - Maximum depth of each tree (`max_depth`)
+  - Learning rate (`learning_rate`)
+  - Subsampling and column sampling rates
+
+6. Model Evaluation
+- Evaluated model using:
+  - **Mean Absolute Error (MAE):** 214.80
+  - **Root Mean Squared Error (RMSE):** 287.19
+  - **R2 Score:** 0.36
   
-- Insights:
-  - Better feature engineering and consistent data splitting strategies can stabilize and improve model performance.
-  
+  > An R² score of 0.36 means the model explains 36% of the variance in the sales data.  
+  > Although not perfect, it is a reasonable first model and can be improved further.
 
+### 7. **Visualization**
+- **Actual vs Predicted Sales Plot** to compare real and forecasted values.
+- **Feature Importance Plot** to understand which features impact the model most.
 
-Future Work
-- Improve feature engineering for better model generalization.
-- Explore hyperparameter tuning (e.g., Ridge, Lasso Regression).
-- Use cross-validation to get more stable R² estimates.
-- Try ensemble methods like Random Forest Regressor or Gradient Boosting.
+---
 
-Author
-- Shashank Mishra
+## 📈 Results Summary
+
+- **R2 Score:** 0.36
+- **Observations:**
+  - The model is learning basic sales patterns.
+  - There's scope for improvement by adding more features like holidays, weather, promotions, etc.
+  - Model tuning and advanced time series techniques could further boost performance.
+
+---
+
+## 🖥 Tech Stack Used
+
+- Python 3.8+
+- Jupyter Notebook
+- Libraries:
+  - `pandas`
+  - `numpy`
+  - `matplotlib`
+  - `seaborn`
+  - `scikit-learn`
+  - `xgboost`
+  - `scipy`
+
+---
+
+## 🚀 How to Run
+
+1. Clone or download this repository.
+2. Install the required libraries:
+   ```bash
+   pip install pandas numpy matplotlib seaborn scikit-learn xgboost scipy
+   ```
+3. Open the Jupyter Notebook (`BECO Model.ipynb`).
+4. Run all the cells step-by-step.
+
+---
+
+## 🔥 Future Scope
+
+- Add more date-related and external features (holidays, promotions, weather).
+- Try Time Series specific models (like Prophet, ARIMA).
+- Improve hyperparameter tuning (Grid Search or Bayesian Optimization).
+- Use TimeSeriesSplit for better validation.
+
+---
+
+## 🙏 Acknowledgment
+
+This project was created as part of a **Demand Forecasting Assignment** to demonstrate a beginner-friendly, practical approach to applying machine learning in a business context.
+
+---
+
+# ✨ End of README
