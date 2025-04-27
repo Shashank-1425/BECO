@@ -1,37 +1,39 @@
-Demand Forecasting Model
+# Demand Forecasting Model
 
-This project aims to build a Demand Forecasting Machine Learning Model based on Blinkit sales data.  
+This project aims to build a **Demand Forecasting Machine Learning Model** based on Blinkit sales data.  
 It predicts future product demand by analyzing patterns from historical sales records.
 
-Project Workflow
+---
 
-1. Data Loading
-- Loaded data from an Excel file using pandas.
+## Project Workflow
+
+### 1. **Data Loading**
+- Loaded data from an Excel file using `pandas`.
 - Ensured proper handling of dates.
 
-2. Data Preparation
-- Converted the date column into datetime format.
+### 2. **Data Preparation**
+- Converted the `date` column into datetime format.
 - Sorted the dataset chronologically.
 - Aggregated daily sales totals.
 
-3. Feature Engineering
+### 3. **Feature Engineering**
 - Created useful features like:
-  - Lag Features - Sales from 1, 7, and 14 days ago.
-  - Rolling Averages - 7 day and 14 day moving averages of sales.
-  - Date-based Features — (like month, week of year, day of week) to capture seasonal effects (optional extension).
+  - **Lag Features** (`lag_1`, `lag_7`, `lag_14`) — Sales from 1, 7, and 14 days ago.
+  - **Rolling Averages** (`rolling_avg_7`, `rolling_avg_14`) — 7-day and 14-day moving averages of sales.
+  - **Date-based Features** — (like month, week of year, day of week) to capture seasonal effects (optional extension).
 
-4. Model Selection
-- Chose XGBoost Regressor because it works well for structured/tabular data, and handles non-linear relationships very efficiently.
+### 4. **Model Selection**
+- Chose **XGBoost Regressor** because it works well for structured/tabular data, and handles non-linear relationships very efficiently.
 
-5. Hyperparameter Tuning
-- Applied RandomizedSearchCV to find the best parameters.
+### 5. **Hyperparameter Tuning**
+- Applied **RandomizedSearchCV** to find the best parameters.
 - Tuned parameters like:
   - Number of trees (`n_estimators`)
   - Maximum depth of each tree (`max_depth`)
   - Learning rate (`learning_rate`)
   - Subsampling and column sampling rates
 
-6. Model Evaluation
+### 6. **Model Evaluation**
 - Evaluated model using:
   - **Mean Absolute Error (MAE):** 214.80
   - **Root Mean Squared Error (RMSE):** 287.19
@@ -56,7 +58,7 @@ Project Workflow
 
 ---
 
-## 🖥 Tech Stack Used
+## Tech Stack Used
 
 - Python 3.8+
 - Jupyter Notebook
@@ -71,31 +73,12 @@ Project Workflow
 
 ---
 
-## 🚀 How to Run
+## Future Scope
 
-1. Clone or download this repository.
-2. Install the required libraries:
-   ```bash
-   pip install pandas numpy matplotlib seaborn scikit-learn xgboost scipy
-   ```
-3. Open the Jupyter Notebook (`BECO Model.ipynb`).
-4. Run all the cells step-by-step.
+- Can add more date-related and external features (holidays, promotions, weather).
+- Can improve hyperparameter tuning (Grid Search or Bayesian Optimization).
 
 ---
 
-## 🔥 Future Scope
+## Author - Shashank Mishra
 
-- Add more date-related and external features (holidays, promotions, weather).
-- Try Time Series specific models (like Prophet, ARIMA).
-- Improve hyperparameter tuning (Grid Search or Bayesian Optimization).
-- Use TimeSeriesSplit for better validation.
-
----
-
-## 🙏 Acknowledgment
-
-This project was created as part of a **Demand Forecasting Assignment** to demonstrate a beginner-friendly, practical approach to applying machine learning in a business context.
-
----
-
-# ✨ End of README
